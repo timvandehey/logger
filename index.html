@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+
+  <link rel="manifest" href="./manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#fff">
+  <meta name="application-name" content="Data">
+
+
+  <link rel="stylesheet" href="./css/global.css" />
+  <script src="https://accounts.google.com/gsi/client"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons" />
+  <script src="./js/marked.min.js"></script>
+
+  <title>Data (vanilla)</title>
+</head>
+
+<body>
+  <div id="header" class="header">
+    <button id="hamburger" class="hamburger">
+      <svg viewBox="0 0 100 80" fill="currentColor" width="2rem" height="2rem">
+        <rect width="100" height=".5rem"></rect>
+        <rect y="30" width="100" height=".5rem"></rect>
+        <rect y="60" width="100" height=".5rem"></rect>
+      </svg>
+    </button>
+    <span class="input altHeader">
+      <span class="material-icons">search</span>
+      <input id="ss" autocorrect="off" autocapitalize="none" />
+      <span id="clearSearch" style="display: none" class="pointer material-icons">search_off</span>
+      <div id="itemsShown" class="altHeader pill"></div>
+    </span>
+    <button id="addButton" class="altHeader">
+      <span class="material-icons"> add </span>
+    </button>
+    <div id="user">
+      <!-- this div is the same size as the avatar
+        for spacing before user loading -->
+      <div style="width: 2rem; height: 2rem"></div>
+    </div>
+  </div>
+  <div id="main">
+    <div id="items" data-menu="Home (notes)" class="tab md" hidden></div>
+    <div id="navigation" class="tab" hidden></div>
+    <div id="usertab" data-menu="User" class="tab" hidden>
+      <p id=userName class=userInfo></p>
+      <p id=userEmail class=userInfo></p>
+      <p id=version class=userInfo></p>
+      <p><button id="so">Signout</button></p>
+    </div>
+    <div id="editor" class="tab" hidden>
+      <button id="save">Save</button> <button id="cancel">Cancel</button>
+      <div id=editorDiv>
+        <form id="form" class="form" onsubmit="return false">
+          <div class="flexwrapper">
+            <label>
+              Title:<br />
+              <input id="titleInput" name="title" value="" />
+            </label>
+            <label>
+              Context:<br />
+              <textarea id="mdInput" rows="15" name="md"></textarea>
+            </label>
+          </div>
+        </form>
+        <div>
+          <p>Preview:</p>
+          <div id="itemDisplay"></div>
+        </div>
+      </div>
+    </div>
+    <div id="fullitem" class="tab" hidden></div>
+    <div id="timeout" class="tab" hidden>
+      <div class=status>Timeout!</div>
+      <p>Session will be terminated due to inactivity.</p>
+      <p>Logout will occur in <strong><span id="loginInSecs"></span></strong> seconds.</p>
+      <button id="timeoutButton">Continue Session...</button>
+    </div>
+    <div id="debug" class="tab" hidden>
+      <button id="toggleDebug">Toggle Debug</button>
+      <button class=inactivity>Simulate Inactivity</button>
+      <div id=otherDebug></div>
+      <pre id="alwaysShow"></pre>
+      <p id="test"></p>
+      <div id="test"></div>
+      <pre id="debuglog"></pre>
+    </div>
+    <div id="initializing" class="tab">
+      <div class="status">Initializing...</div>
+    </div>
+    <div id="loading" class="tab" hidden>
+      <div class="status">Loading...</div>
+    </div>
+    <div id="updating" class="tab" hidden>
+      <div class="status">Updating...</div>
+    </div>
+    <div id="authenticating" class="tab" hidden>
+      <div class="status">Authenticating...</div>
+      <div hidden id="signinButton" data-type="standard" data-size="medium" data-theme="filled_blue" data-shape="pill"
+        data-logo_alignment="left"></div>
+    </div>
+    <div id="authorizing" class="tab" hidden>
+      <div class="status">Authorizing...</div>
+    </div>
+    <div id='help' class='tab md' hidden>
+      <div class=status>Help Screen</div>
+      <div class=helpHTML><span class=status>Loading Help...</span></div>
+    </div>
+    <pre id=error class=tab hidden>
+
+    </pre>
+  </div>
+  <div id="footer"></div>
+  <script>
+  </script>
+  <script type="module" src="./js/startup.js"></script>
+</body>
+
+</html>

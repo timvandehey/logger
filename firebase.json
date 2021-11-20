@@ -1,0 +1,44 @@
+{
+  "hosting": [
+    {
+      "public": "/",
+      "target": "vanilladata",
+      "ignore": [
+        "**/.*",
+        "**/node_modules/**",
+        "**/git/**",
+        "push",
+        "dev",
+        "*.md",
+        "*.log",
+        ".gitignore"
+      ],
+      "rewrites": [
+        {
+          "source": "/prod",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "public": "/",
+      "target": "vanilladatatest",
+      "ignore": [
+        "**/.*",
+        "**/node_modules/**",
+        "**/git/**",
+        "push",
+        "dev",
+        "*.md",
+        "*.log",
+        ".gitignore"
+      ],
+      "rewrites": [
+        {
+          "source": "/prod",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

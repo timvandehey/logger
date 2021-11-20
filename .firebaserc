@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "vandyapps53"
+  },
+  "targets": {
+    "vandyapps53": {
+      "hosting": {
+        "vanilladata": [
+          "vanilladata"
+        ],
+        "vanilladatatest": [
+          "vanilladatatest"
+        ]
+      }
+    }
+  }
+}

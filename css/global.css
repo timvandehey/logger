@@ -1,0 +1,357 @@
+:root {
+  /* https://www.w3schools.com/colors/colors_converter.asp */
+  --primary-h: 213;
+  --primary-s: 97%;
+  --primary-l: 50%;
+  --primary: hsl(var(--primary-h),
+      var(--primary-s),
+      var(--primary-l));
+  /*#0373fc;*/
+  --secondary: hsl(120, 100%, 25%);
+  /*green*/
+  --lightsecondary: hsl(120, 100%, 94%);
+  --mediumsecondary: hsl(120, 100%, 74%);
+  --warning: yellow;
+  --highlight: yellow;
+  --danger: red;
+  --white: hsl(var(--primary-h), var(--primary-s), 97%);
+  --offwhite: lightgrey;
+  --gray: gray;
+  --black: black;
+  --border-radius: 0.4em;
+  --vh: 1vh;
+  /* --font-size: 20px; */
+}
+
+* {
+  box-sizing: border-box;
+  /* margin: 0;
+  padding: 0; */
+  /* font-size: var(--font-size); */
+  /* outline: 1px red solid; */
+}
+
+body {
+  height: 100vh;
+  /* height: calc(var(--vh, 1vh) * 100); */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: Roboto;
+}
+
+button {
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: 1rem;
+  cursor: pointer;
+  font-size: 2rem;
+  width: fit-content;
+}
+
+body.devbackground {
+  background-color: var(--offwhite);
+}
+
+#main {
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: clamp(350px, 100%, 100%);
+  overflow-y: scroll;
+  min-height: 200px;
+  height: calc(100vh - 5em);
+}
+
+#items ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header * {
+  margin: 0.2em;
+}
+
+.header button {
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  color: var(--primary);
+  background-color: var(--white);
+}
+
+.header button b {
+  font-size: 1.5rem;
+}
+
+.header {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem;
+}
+
+.header .input {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+  margin-right: 1rem;
+}
+
+.header .input input {
+  width: 2rem;
+  flex: 1 2 0px;
+  max-width: 25rem;
+}
+
+.header img {
+  border-radius: 50%;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+#header {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+#usertab p {
+  text-align: right;
+}
+
+.userInfo {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#itemsShown {
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+button.hamburger {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.tab {
+  padding: 0.6rem;
+}
+
+#navigation button {
+  margin: 0.5rem;
+  padding: 0.5rem;
+}
+
+#navigation ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline-block;
+  /* background-color: wheat; */
+}
+
+/* button.navigation {
+  background-color: transparent;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: 1rem;
+  cursor: pointer;
+  font-size: 2rem;
+} */
+
+#items ul {
+  display: flex;
+  flex-direction: rows;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.item {
+  flex-grow: 1;
+}
+
+.item * {
+  padding: 0;
+  margin: 0;
+}
+
+.item li {
+  padding: 0 1rem;
+  margin: 0 1rem;
+}
+
+.card {
+  border: 2px solid var(--primary);
+  box-shadow: 5px 10px 8px var(--gray);
+  padding: 2px 1em 1em 1em;
+  width: 350px;
+  border-radius: 1.5em;
+  background: var(--lightsecondary);
+  margin: 1rem;
+}
+
+.card.deleting {
+  border: 2px solid var(--danger);
+}
+
+.card_content {
+  border-radius: 1.5em;
+  background: var(--white);
+  padding: 0.3em;
+  overflow: scroll;
+}
+
+@media only screen and (min-width: 780px) {
+  #items .card_content {
+    height: 15rem;
+  }
+}
+
+.card_header {
+  text-align: right;
+  padding: 0;
+  border: 0;
+}
+
+.card_header .material-icons {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  color:inherit;
+}
+
+p.fromMd {
+  padding: 0.2rem 0;
+  margin: 0.2rem 0;
+}
+
+em.fromMd {
+  font-style: normal;
+  background-color: var(--highlight);
+}
+
+pre.fromMd {
+  padding: 0.3rem;
+  margin: 0.3rem;
+  border-left: 0.3rem solid var(--mediumsecondary);
+}
+
+blockquote.fromMd {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: 0.3rem solid var(--offwhite);
+  width: fit-content;
+}
+
+table.helpTable,
+th.helpTable,
+td.helpTable {
+  border-collapse: collapse;
+  border: 1px solid var(--primary)
+}
+
+th.helpTable,
+td.helpTable {
+  max-width: 50vw;
+  overflow-x: scroll;
+  padding: .2rem;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+#editorDiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#editor .flexwrapper {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+#editor .form * {
+  padding: 0.5rem;
+}
+
+#editor .form {
+  width: min(80ch, 100vw - 2rem);
+}
+
+#editor textarea {
+  width: 100%;
+}
+
+#fullitem .card {
+  width: 95%;
+}
+
+.item button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.item button span {
+  padding-left: 0.4rem;
+}
+
+.altHeader.invisible {
+  visibility: hidden;
+}
+
+.status {
+  font-size: 2.7rem;
+  font-weight: bolder;
+}
+
+.larger {
+  font-size: larger;
+}
+
+details>summary {
+  list-style-type: none;
+}
+
+details>summary::-webkit-details-marker {
+  display: none;
+}
+
+details>summary::before details>summary {
+  list-style-type: none;
+}
+
+details>summary::-webkit-details-marker {
+  display: none;
+}
+
+details>summary::before {
+  font-size: 1.3rem;
+  font-family: "Material Icons";
+  content: "expand_more";
+}
+
+details[open]>summary::before {
+  font-size: 1.3rem;
+  font-family: "Material Icons";
+  content: "expand_less";
+}
+
+details {
+  padding: 0.5rem;
+}
+
+details[open]>summary {
+  margin-bottom: 0.5rem;
+}
