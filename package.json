@@ -1,5 +1,5 @@
 {
-  "name": "vanilladata",
+  "name": "logger",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -18,10 +18,5 @@
   "bugs": {
     "url": "https://github.com/timvandehey/vanillaData/issues"
   },
-  "homepage": "https://github.com/timvandehey/vanillaData#readme",
-  "dependencies": {
-    "favicons": "^6.2.2",
-    "marked": "^2.1.3",
-    "marked-plaintext": "^0.0.2"
-  }
+  "homepage": "https://github.com/timvandehey/vanillaData#readme"
 }

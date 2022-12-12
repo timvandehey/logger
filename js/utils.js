@@ -149,19 +149,62 @@ function toRawType(value) {
   return str.slice(8, -1);
 }
 
-export function getDate() {
-  const d = new Date();
-  const ret = {
-    hour: d.getHours(),
-    minutes: d.getMinutes(),
-    seconds: d.getSeconds(),
-    local: d.toLocaleString(),
-    month: d.getMonth(),
-    day: d.getDay(),
-    dow: d.toString().slice(0, 3),
-  };
-  return ret;
+export function daysDiff(StartDate, EndDate) {
+  return (Date.UTC(EndDate.getFullYear(), EndDate.getMonth(), EndDate.getDate()) -
+    Date.UTC(StartDate.getFullYear(), StartDate.getMonth(), StartDate.getDate())) / 86400000;
 }
+
+export function getDate(dt = new Date()) {
+  const d = new Date(dt)
+  const hour = d.getHours()
+  const dows = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+  const local = d.toLocaleString().replace(',', '')
+  const [date, ...rest] = local.split(' ')
+  const time = rest.join('')
+  const ret = {
+    hour
+    , azHour: d.getTimezoneOffset() == 300 ? hour - 2 : hour - 1
+    , minute: d.getMinutes()
+    , second: d.getSeconds()
+    , local
+    , date
+    , time
+    , rest
+    , az: d.toLocaleString('en-US', { timeZone: 'America/Phoenix' }).replace(',', '')
+    , intl: getIntlInfo(d)
+    , month: d.getMonth()
+    , day: d.getDay()
+    , year: d.getYear() + 1900
+    , dow: dows[d.getDay()].substring(0, 3)
+    , dowLong: dows[d.getDay()]
+    // ,time: String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0')
+    , getTime: d.getTime()
+  }
+  // const {minute,second} = ret
+  // log({hour,minute,second})
+  return ret
+}
+
+export function getIntlInfo(date) {
+  // request a weekday along with a long date
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  options.timeZone = 'America/Chicago'
+  return new Intl.DateTimeFormat('en-US', options).format(date);
+}
+
+// export function getDate() {
+//   const d = new Date();
+//   const ret = {
+//     hour: d.getHours(),
+//     minutes: d.getMinutes(),
+//     seconds: d.getSeconds(),
+//     local: d.toLocaleString(),
+//     month: d.getMonth(),
+//     day: d.getDay(),
+//     dow: d.toString().slice(0, 3),
+//   };
+//   return ret;
+// }
 
 export function sequenceGenerator(start = 1, preString = "S") {
   function* sequenceGenerator(start) {

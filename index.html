@@ -15,9 +15,8 @@
   <link rel="stylesheet" href="./css/global.css" />
   <script src="https://accounts.google.com/gsi/client"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Icons" />
-  <script src="./js/marked.min.js"></script>
 
-  <title>Data (vanilla)</title>
+  <title>Logger</title>
 </head>
 
 <body>
@@ -45,13 +44,14 @@
     </div>
   </div>
   <div id="main">
-    <div id="items" data-menu="Home (notes)" class="tab md" hidden></div>
     <div id="navigation" class="tab" hidden></div>
     <div id="usertab" data-menu="User" class="tab" hidden>
-      <p id=userName class=userInfo></p>
-      <p id=userEmail class=userInfo></p>
-      <p id=version class=userInfo></p>
-      <p><button id="so">Signout</button></p>
+      <div class=usercontainer>
+        <div id=userName></div>
+        <div id=userEmail></div>
+        <div id=version></div>
+        <div><button id="so">Signout</button></div>
+      </div>
     </div>
     <div id="editor" class="tab" hidden>
       <button id="save">Save</button> <button id="cancel">Cancel</button>
@@ -74,7 +74,67 @@
         </div>
       </div>
     </div>
-    <div id="fullitem" class="tab" hidden></div>
+    <template id=itemTemplate>
+      <table>
+        <tr>
+          <td class=DateTime></td>
+          <td>
+            <table class=itemData>
+              <tr>
+                <td>Blood Pressure</td>
+                <td class=BP></td>
+              </tr>
+              <tr>
+                <td>Pulse</td>
+                <td class=Pulse></td>
+              </tr>
+              <tr>
+                <td>Weight</td>
+                <td class=Weight></td>
+              </tr>
+              <tr>
+                <td>Blood Sugar</td>
+                <td class=BloodSugar></td>
+              </tr>
+              <tr>
+                <td>Comment</td>
+                <td class=Comment></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </template>
+    <div id="items" data-menu="List (Home)" class="tab" hidden>
+      <!-- <table class=items>
+        <thead>
+          <tr>
+            <th colspan=5>Date Time</th>
+          </tr>
+          <tr>
+            <th>Blood Pressure</th>
+            <th>Pulse</th>
+            <th>Gly</th>
+            <th>lbs</th>
+            <th>Comment</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table> -->
+    </div>
+    <div id="fullitem" class="tab" hidden>
+      <table>
+        <thead>
+          <th>DateTime</th>
+          <th>Blood Pressure</th>
+          <th>Pulse</th>
+          <th>Gly</th>
+          <th>lbs</th>
+          <th>Comment</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
     <div id="timeout" class="tab" hidden>
       <div class=status>Timeout!</div>
       <p>Session will be terminated due to inactivity.</p>

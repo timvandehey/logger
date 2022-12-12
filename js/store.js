@@ -9,7 +9,7 @@ export const API_URL =
   // 'https://script.google.com/macros/s/AKfycbzXM5-xuTUg8RZttjY62Edh52PZwEsxPhd-WzdBevhmoMcIrapPP20_BYdrlz9zf0ALKA/exec'
   'https://script.google.com/macros/s/AKfycbyv911RCTj7ywKcIy3Eu4atkn6_rGUsp2Fke7hsIR8354YYUb0jEBrxUWuScpxR8VMMlg/exec'
 
-export const dbName = "test11";
+export const dbName = "logger";
 
 export const store = storeFactory({
   user: { name: "tim" },

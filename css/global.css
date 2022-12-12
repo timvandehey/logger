@@ -1,3 +1,58 @@
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
 :root {
   /* https://www.w3schools.com/colors/colors_converter.asp */
   --primary-h: 213;
@@ -49,6 +104,9 @@ button {
   cursor: pointer;
   font-size: 2rem;
   width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 body.devbackground {
@@ -123,13 +181,19 @@ body.devbackground {
   color: var(--white);
 }
 
-#usertab p {
-  text-align: right;
+.usercontainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: flex-end;
+  justify-content: center;
 }
 
-.userInfo {
+#usertab * {
   font-size: 2rem;
   font-weight: bold;
+  width: fit-content;
+  /* text-align: right; */
 }
 
 #itemsShown {
@@ -170,7 +234,7 @@ button.hamburger {
 
 #items ul {
   display: flex;
-  flex-direction: rows;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
@@ -212,7 +276,7 @@ button.hamburger {
 
 @media only screen and (min-width: 780px) {
   #items .card_content {
-    height: 15rem;
+    min-height: 15rem;
   }
 }
 
@@ -225,7 +289,7 @@ button.hamburger {
 .card_header .material-icons {
   margin-left: 1rem;
   font-size: 1.5rem;
-  color:inherit;
+  color: inherit;
 }
 
 p.fromMd {
@@ -249,6 +313,11 @@ blockquote.fromMd {
   margin: 0.5rem;
   border: 0.3rem solid var(--offwhite);
   width: fit-content;
+}
+
+table.items>tbody>tr {
+  border-collapse: collapse;
+  outline: 1px solid var(--primary)
 }
 
 table.helpTable,

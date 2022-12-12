@@ -1,10 +1,9 @@
 import { store } from "./store.js";
 import { dbCreate, dbRead, dbUpdate, dbDelete } from "./server.js";
-import { log, hide, show, clearElement, debounced } from "./utils.js";
+import { log, hide, show, clearElement, debounced, getDate } from "./utils.js";
 import { eventTypes, addEventListener } from "./events.js";
 // import { iconButton } from "./icons.js";
 import { changeTab } from "./tabs.js";
-import { convertToHTML, convertToPlainText } from "./markdownService.js";
 // import h from "./elements.js";
 // const { ul, li, div, button, span } = h;
 
@@ -75,9 +74,25 @@ export function gotItems(data) {
 }
 
 function renderItem(item) {
+  let itemHTML = '' //store.elements.itemTemplate.content.cloneNode(true)
+  const d = getDate(item['Date Time'])
+  let [date, time, ampm] = d.local.split(' ')
+  time = time.split(':').slice(0, 2).join(':')
+  itemHTML += `<p><b>${d.dowLong} ${date} ${time} ${ampm}</b></p>`
+  const sys = item['BP-S']
+  const dia = item['BP-D']
+  const bp = sys.length > 0 & dia.length > 0 ? `${sys} / ${dia}` : ''
+  itemHTML += `<p>Blood Pressure: ${bp}</p>`
+  itemHTML += `<p>Pulse: ${item.Pulse}</p>`
+  itemHTML += `<p>Blood Sugar: ${item['Blood Sugar']}</p>`
+  itemHTML += `<p>Weight: ${item.Weight}</p>`
+  itemHTML += `<p><em>${item.Comment}</em></p>`
+  // itemHTML.querySelector('.BloodSugar').innerHTML = item['Blood Sugar']
+  // itemHTML.querySelector('.Weight').innerHTML = item.Weight
+  // itemHTML.querySelector('.Comment').innerHTML = item.Comment
   const node = document.createElement("div");
   node.innerHTML = renderItemHtml;
-  node.querySelector(".card_content").innerHTML = `<pre>${JSON.stringify(item, null, 2)}</pre>}`;
+  node.querySelector(".card_content").innerHTML = itemHTML
   node.classList.add("item");
   node.dataset.key = item.key;
   return [node, item];
@@ -107,11 +122,13 @@ export function renderItems() {
   const itemsEl = document.createElement("ul");
   store.elements.items.appendChild(itemsEl);
   // itemsEl.addEventListener("click", itemClicked);
+  // const tbody = store.elements.items.querySelector('tbody')
   const listItems = store.items.map(renderItem);
   listItems.forEach(([node, item]) => {
     const li = document.createElement("li");
     li.appendChild(node);
-    store.itemElements[item.key] = li;
+    store.itemElements[item.key] = node;
+    // t  body.appendChild(node)
     itemsEl.appendChild(li);
   });
   const renderTime = Date.now() - startRender
